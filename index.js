@@ -29,11 +29,8 @@ class BundleVersionWebpackPlugin {
     compiler.hooks.assetEmitted.tap(
       "Bundle Version Webpack Plugin",
       (file, { targetPath }) => {
-        console.log("Before to generate Bundle version")
         const bundleHash = getHashFile(targetPath);
         const indexFile = this.options.indexFile;
-
-        console.log(bundleHash, indexFile)
 
         updateBundleVersion(indexFile, bundleHash);
       }
